@@ -1,0 +1,88 @@
+# ── Build output ──────────────────────────────────────────────────────────────
+# Compiled binary (Makefile: make build)
+commitforge
+commitforge.exe
+
+# GoReleaser output (goreleaser release / goreleaser build)
+dist/
+
+# ── Test & coverage artifacts ─────────────────────────────────────────────────
+coverage
+coverage.html
+*.coverprofile
+*.test
+
+# ── Go build cache ────────────────────────────────────────────────────────────
+# (go build ./... places objects under the module cache, not the repo, but just
+# in case a stray object lands here:)
+*.o
+*.a
+
+# ── Runtime / generated data ─────────────────────────────────────────────────
+# The output/ directory is the default working tree for CommitForge projects.
+# It contains git repos created at runtime and must never be committed.
+output/
+
+# ── OS-specific files ────────────────────────────────────────────────────────
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+# NTFS Alternate Data Stream markers (WSL / WSL2 artifacts)
+*:Zone.Identifier
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+# ── IDE / editor files ───────────────────────────────────────────────────────
+# JetBrains (GoLand, IntelliJ, etc.)
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+tags
+tags.*
+.netrwhist
+
+# Emacs
+\#*\#
+.#*
+*.elc
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ── Dependency directories (if ever vendored) ────────────────────────────────
+vendor/
+
+# ── Environment / secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+*.log
+tmp/
+temp/

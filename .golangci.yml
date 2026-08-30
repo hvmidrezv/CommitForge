@@ -1,0 +1,60 @@
+# golangci-lint configuration for CommitForge (Go CLI/TUI)
+# Docs: https://golangci-lint.run/usage/configuration/
+
+run:
+  timeout: 5m
+  tests: true
+
+output:
+  sort-results: true
+
+linters:
+  disable-all: true
+  enable:
+    - govet       # go tool vet checks (printf, shadow, struct tags, ...)
+    - staticcheck # comprehensive static analysis (includes stylecheck checks)
+    - errcheck    # unchecked error returns
+    - gosimple    # simplifiable code (aliased into staticcheck in newer versions)
+    - unused      # unused functions, types, fields, variables
+    - gofmt       # formatting (gofmt -s)
+    - goimports   # import grouping/ordering
+
+linters-settings:
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: commitforge
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+
+issues:
+  # Show all issues, including the ones disabled by default.
+  exclude-use-default: false
+
+  # Maximum issues count per one linter. Set to 0 to disable the limit.
+  max-issues-per-linter: 0
+
+  # Maximum count of issues with the same text. Set to 0 to disable the limit.
+  max-same-issues: 0
+
+  exclude-rules:
+    # Tests are allowed to ignore returned errors and be verbose.
+    - path: _test\.go
+      linters:
+        - errcheck
+        - gosec
+
+    # Examples / testdata style files are not part of the binary.
+    - path: ^testdata/
+      linters:
+        - all
+
+  exclude-files:
+    # Generated code.
+    - ".*\\.pb\\.go$"
+    - ".*\\.pb\\.gw\\.go$"
+    - ".*_gen\\.go$"
+    - ".*\\.gen\\.go$"
+    - ".*\\.deepcopy\\.go$"
+    - ".*zz_generated.*\\.go$"
