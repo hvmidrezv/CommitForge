@@ -5,7 +5,7 @@ commitforge.exe
 
 # GoReleaser output (goreleaser release / goreleaser build)
 dist/
-
+*:Zone.Identifier
 # ── Test & coverage artifacts ─────────────────────────────────────────────────
 coverage
 coverage.html

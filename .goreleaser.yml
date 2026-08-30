@@ -1,20 +1,15 @@
 # GoReleaser configuration for CommitForge
-# Docs: https://goreleaser.com
-#
-# Dry run locally:  goreleaser release --snapshot --clean
-# Check config:     goreleaser check
-
+# https://goreleaser.com
 version: 2
-
-project_name: commitforge
 
 before:
   hooks:
     - go mod tidy
+    - go test ./...
 
 builds:
   - id: commitforge
-    main: .
+    main: ./cmd
     binary: commitforge
     env:
       - CGO_ENABLED=0
@@ -26,61 +21,28 @@ builds:
       - amd64
       - arm64
     ldflags:
-      - -s -w -X main.version={{ .Version }} -X main.commit={{ .Commit }} -X main.date={{ .Date }}
-    mod_timestamp: "{{ .CommitTimestamp }}"
+      - -s -w
 
 archives:
-  # Upload raw binaries to GitHub Releases (no .tar.gz/.zip wrapper).
-  # `formats: [binary]` is the v2 spelling of the classic `format: binary`.
-  - id: default
-    formats: [binary]
-    # Uploaded artifact names (GoReleaser auto-appends .exe for windows,
-    # so only non-windows targets need the explicit .bin suffix):
-    #   commitforge_windows_amd64.exe
-    #   commitforge_linux_amd64.bin
-    #   commitforge_darwin_arm64.bin
+  - id: commitforge
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
     name_template: >-
-      {{ .ProjectName }}_{{ .Os }}_{{ .Arch }}
-      {{- if ne .Os "windows" }}.bin{{ end }}
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
 
 checksum:
-  name_template: "checksums.txt"
+  name_template: checksums.txt
 
 snapshot:
   version_template: "{{ incpatch .Version }}-next"
 
 changelog:
-  # Generate release notes from conventional-ish commit messages.
-  use: git
   sort: asc
-  groups:
-    - title: Features
-      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
-      order: 0
-    - title: Bug fixes
-      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
-      order: 1
-    - title: Documentation
-      regexp: '^.*?docs?(\([[:word:]]+\))??!?:.+$'
-      order: 2
-    - title: Build and CI
-      regexp: '^(.*?build|.*?ci)(\([[:word:]]+\))??!?:.+$'
-      order: 3
-    - title: Other changes
-      order: 999
   filters:
     exclude:
-      - "^Merge pull request"
-      - "^Merge branch"
-      - "^Revert"
-      - "^chore: release"
-      - "(?i)typos?\\s*$"
-
-release:
-  draft: false
-  prerelease: auto
-  mode: replace
-  header: |
-    ## CommitForge {{ .Tag }}
-
-    **Full Changelog**: https://github.com/user/commitforge/compare/{{ .PreviousTag }}...{{ .Tag }}
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "^ci:"

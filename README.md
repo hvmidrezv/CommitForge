@@ -5,10 +5,10 @@
 
 **A Go TUI application for crafting GitHub-style contribution calendars via backdated commits.**
 
-[![CI](https://github.com/hvmidrezv/Commit-Forge/actions/workflows/ci.yml/badge.svg)](https://github.com/hvmidrezv/Commit-Forge/actions/workflows/ci.yml)
-[![Latest Release](https://img.shields.io/github/v/release/hvmidrezv/Commit-Forge)](https://github.com/hvmidrezv/Commit-Forge/releases/latest)
-[![Go Version](https://img.shields.io/github/go-mod/go-version/hvmidrezv/Commit-Forge)](https://go.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hvmidrezv/Commit-Forge/blob/main/LICENSE)
+[![CI](https://github.com/hvmidrezv/CommitForge/actions/workflows/ci.yml/badge.svg)](https://github.com/hvmidrezv/CommitForge/actions/workflows/ci.yml)
+[![Latest Release](https://img.shields.io/github/v/release/hvmidrezv/CommitForge)](https://github.com/hvmidrezv/CommitForge/releases/latest)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/hvmidrezv/CommitForge)](https://go.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/hvmidrezv/CommitForge/blob/main/LICENSE)
 
 
 [Features](#features) · [Architecture](#architecture) · [Installation](#installation) · [Usage](#usage) · [CLI Reference](#cli-reference) · [Keybindings](#tui-keybindings) · [Development](#development) · [Changelog](#changelog)
@@ -218,7 +218,7 @@ commitforge/
 
 ```sh
 # Clone the repository
-git clone https://github.com/hvmidrezv/Commit-Forge.git
+git clone https://github.com/hvmidrezv/CommitForge.git
 cd commitforge
 
 # Build the binary
@@ -649,7 +649,7 @@ Contributions are welcome! Here's how to get started:
 
 ```sh
 # Clone and enter the project
-git clone https://github.com/hvmidrezv/Commit-Forge.git
+git clone https://github.com/hvmidrezv/CommitForge.git
 cd commitforge
 
 # Build and test
