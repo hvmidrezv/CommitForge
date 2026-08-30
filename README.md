@@ -1,5 +1,5 @@
 <div align="center">
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/80c4b008-4fd3-4cea-8357-9838a35d8b76" />
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/a68451e4-8a31-44a4-b9ff-e994cb3c7d3f" />
 
 # CommitForge
 
